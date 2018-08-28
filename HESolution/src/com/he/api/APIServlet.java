@@ -192,12 +192,6 @@ public class APIServlet extends HttpServlet {
 					if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 						Element eElement = (Element) nNode;
 						if(Integer.parseInt(eElement.getAttribute("id").trim()) ==id) {	
-							if(returnData.toString().equals("")) {
-								returnData.append("[{");
-							}
-							else {
-								returnData.append("<br>},{");
-							}
 							eElement.setAttribute("firstName", firstName);
 							eElement.setAttribute("lastName", lastName);
 							
@@ -207,6 +201,7 @@ public class APIServlet extends HttpServlet {
 
 //					        Path currentRelativePath = Paths.get("");
 //					        String s = currentRelativePath.toAbsolutePath().toString()+"/data.xml";
+		        			// StreamResult result = new StreamResult(new File("F:\\WORK\\JavaEclipse\\HESolution\\src\\com\\he\\api\\data.xml"));
 					        StreamResult result = new StreamResult(new File(path.getFile()));
 					        transformer.transform(source, result);
 						}
@@ -228,7 +223,8 @@ public class APIServlet extends HttpServlet {
 		        DOMSource source = new DOMSource(doc);
 //		        Path currentRelativePath = Paths.get("");
 //		        String s = currentRelativePath.toAbsolutePath().toString()+"/data.xml";
-		        StreamResult result = new StreamResult(new File(path.getFile()));
+				StreamResult result = new StreamResult(new File(path.getFile()));
+		        // StreamResult result = new StreamResult(new File("F:\\WORK\\JavaEclipse\\HESolution\\src\\com\\he\\api\\data.xml"));
 		        transformer.transform(source, result);
 		        
 			} else {
